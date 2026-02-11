@@ -102,7 +102,7 @@ class TextProcessor:
             "retry_count": total_retry_count,
             "blocks_processed": len(blocks),
             "needs_review": needs_review_count > 0,
-            "errors": all_errors if all_errors else [],
+            "errors": all_errors if all_errors else None,
             "debug": {
                 "raw_ai_extraction_output": debug_raw,
                 "after_auto_fix": debug_auto_fix,
