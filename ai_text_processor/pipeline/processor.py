@@ -92,7 +92,8 @@ class TextProcessor:
                 }
             )
 
-        processing_time = time.time() - start_time
+        end_time = time.time()
+        processing_time = end_time - start_time
 
         return {
             "results": {"orders": all_orders},
