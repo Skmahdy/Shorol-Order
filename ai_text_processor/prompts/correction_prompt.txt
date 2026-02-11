@@ -1,0 +1,19 @@
+The previous output failed validation.
+
+Errors:
+{errors}
+
+Fix ONLY the invalid fields based on the original text below.
+Return full valid JSON with "orders" array.
+No explanations. No markdown.
+
+Rules:
+- Phone must be 11 digits starting with 01[3-9]
+- Remove +88 prefix if present
+- Quantity must be an integer
+- Do not leave address empty if it was provided
+
+Original text:
+"""
+{block}
+"""
