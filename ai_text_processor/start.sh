@@ -34,6 +34,11 @@ fi
 
 # Run tests first
 echo "🧪 Running tests..."
+if [ ! -f "test_pipeline.py" ]; then
+    echo "❌ test_pipeline.py not found"
+    exit 1
+fi
+
 python3 test_pipeline.py
 if [ $? -ne 0 ]; then
     echo "❌ Tests failed"

@@ -79,13 +79,9 @@ class Validator:
         if 'phone' in order and order['phone'] is not None:
             phone = str(order['phone']).strip()
             
-            # Check phone format
+            # Check phone format (includes length check via regex)
             if not re.match(r'^01[3-9]\d{8}$', phone):
                 errors.append(f"{prefix}Phone must be 11 digits starting with 01[3-9]")
-            
-            # Check phone length
-            if len(phone) != 11:
-                errors.append(f"{prefix}Phone must be exactly 11 digits (got {len(phone)})")
         
         # Validate quantity
         if 'quantity' in order and order['quantity'] is not None:

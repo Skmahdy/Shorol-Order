@@ -76,7 +76,8 @@ class AutoFixer:
         if re.match(r'^01[3-9]\d{8}$', phone_str):
             return phone_str
         
-        return phone if phone else None
+        # Return None for invalid phones
+        return None
     
     @classmethod
     def _extract_quantity_from_item(cls, item: str) -> Any:

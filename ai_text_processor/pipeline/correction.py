@@ -1,10 +1,7 @@
 import json
 from typing import Dict, Any, List
 import os
-try:
-    import openai
-except ImportError:
-    openai = None
+from openai import OpenAI
 
 from config import config
 from pipeline.validator import ValidationResult
@@ -21,9 +18,13 @@ class Corrector:
     def __init__(self):
         """Initialize corrector with correction prompt."""
         self.correction_prompt_template = self._load_correction_prompt()
+        self.client = None
         
-        if openai and config.OPENAI_API_KEY:
-            openai.api_key = config.OPENAI_API_KEY
+        if config.OPENAI_API_KEY:
+            try:
+                self.client = OpenAI(api_key=config.OPENAI_API_KEY)
+            except Exception:
+                self.client = None
     
     def _load_correction_prompt(self) -> str:
         """Load correction prompt template from file."""
@@ -76,7 +77,7 @@ Original text:
         )
         
         try:
-            if not openai or not config.OPENAI_API_KEY:
+            if not self.client:
                 # Return mock for testing
                 return {
                     "status": "needs_review",
@@ -84,7 +85,7 @@ Original text:
                     "orders": []
                 }
             
-            response = openai.ChatCompletion.create(
+            response = self.client.chat.completions.create(
                 model=config.OPENAI_MODEL,
                 messages=[
                     {"role": "user", "content": prompt}

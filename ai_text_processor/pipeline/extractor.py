@@ -1,10 +1,7 @@
 import json
 from typing import Dict, Any, Optional
 import os
-try:
-    import openai
-except ImportError:
-    openai = None
+from openai import OpenAI
 
 from config import config
 
@@ -20,9 +17,13 @@ class Extractor:
     def __init__(self):
         """Initialize the extractor with system prompt."""
         self.system_prompt = self._load_system_prompt()
+        self.client = None
         
-        if openai and config.OPENAI_API_KEY:
-            openai.api_key = config.OPENAI_API_KEY
+        if config.OPENAI_API_KEY:
+            try:
+                self.client = OpenAI(api_key=config.OPENAI_API_KEY)
+            except Exception:
+                self.client = None
     
     def _load_system_prompt(self) -> str:
         """Load system prompt from file."""
@@ -61,11 +62,11 @@ Rules:
 """
         
         try:
-            if not openai or not config.OPENAI_API_KEY:
+            if not self.client:
                 # Return mock response for testing without API key
                 return self._extract_mock(block)
             
-            response = openai.ChatCompletion.create(
+            response = self.client.chat.completions.create(
                 model=config.OPENAI_MODEL,
                 messages=[
                     {"role": "system", "content": self.system_prompt},
