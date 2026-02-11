@@ -2,7 +2,7 @@ Sample 1 — Clean
 Rahim 01711234567 Mirpur 10 Black shirt 2pc
 
 Sample 2 — Banglish + Bengali digits
-017১১234567
+০১৭১১২৩৪৫৬৭
 uttara ৭ no sector
 lal panjabi duita lagbe
 
