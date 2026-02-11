@@ -1,66 +1,20 @@
-# Test Samples for AI Text Processor
+Sample 1 — Clean
+Rahim 01711234567 Mirpur 10 Black shirt 2pc
 
-## Case 1: Single Clean Order
-Rahim Ahmed
-01711234567
-Dhaka, Mirpur-10, Road 5, House 12
-T-shirt
-2
+Sample 2 — Banglish + Bengali digits
+017১১234567
+uttara ৭ no sector
+lal panjabi duita lagbe
 
-## Case 2: Messy Banglish
-rahim vai 😊
-phone: ০১৭১১১২৩৪৫৬
-mirpur 10 e asben
-tshirt duita lagbe
+Sample 3 — Two Orders
+Rahim 01711234567 Mirpur 10 Black shirt 2pc
+Karim 01899888777 Uttara sector 7 Blue panjabi 1ta
 
-## Case 3: Bengali Digits
-নাম: করিম
-ফোন: ০১৮১২৩৪৫৬৭৮
-ঠিকানা: চট্টগ্রাম
-জিন্স প্যান্ট ১টা
+Sample 4 — Missing Quantity
+01711234567 dhanmondi road 5 red shirt
 
-## Case 4: Two Phone Numbers
-Rahim 01711234567
-Dhaka mirpur 10
-T-shirt 2pc
-
-Karim 01812345678
-Chittagong agrabad
-Shoes 3 pieces
-
-## Case 5: Missing Phone
-Rahim Ahmed
-Dhaka Mirpur
-Shirt 1 pc
-
-## Case 6: Quantity Words
-Rahim 01711234567
-Mirpur Dhaka
-T-shirt duita
-Jeans ekta
-
-## Case 7: With +88 Prefix
-Name: Ahmed
-Phone: +8801711234567
-Address: Gulshan-2, Dhaka
-Item: Laptop bag
-Qty: 1
-
-## Case 8: Phone Without Leading Zero
-Karim bhai
-1711234567
-Dhanmondi
-Watch duita
-
-## Case 9: Multiple Items
-Rahim 01711234567
-Dhaka Mirpur 10
-- T-shirt 2pc
-- Jeans 1pc
-- Cap 1pc
-
-## Case 10: Very Messy
-rahim vai!!! 😀😀
-01711234567 
-mirpur e asben plz...
-tshirt duita lagbe urgently!!!
+Sample 5 — Extra Noise
+bhai pls ekta lal shirt lagbe
+amar nam Rahim
+phone 01711234567
+address mirpur 10
